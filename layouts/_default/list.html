@@ -1,0 +1,11 @@
+{{ partial "header.html" . }}
+
+<div id='content'>
+  <h1 class="p-page-title">Posts dans {{ .Title }}</h1>
+
+  {{ range (.Paginate .Data.Pages).Pages }}
+  {{ .Render "grid" }}
+  {{ end }}
+</div>
+
+{{ partial "footer.html" . }}

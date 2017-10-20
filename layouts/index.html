@@ -1,0 +1,11 @@
+{{ partial "header.html" . }}
+
+<div id='content'>
+  <div class="row">
+    {{ range $key, $value := .Paginator.Pages }}
+    {{ .Render "grid" }}
+    {{ end }}
+  </div>
+</div>
+
+{{ partial "footer.html" . }}

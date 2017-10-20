@@ -1,0 +1,12 @@
+name = "Infecte"
+license = "MIT"
+licenselink = "https://github.com/infecte/infecte-theme/blob/master/LICENSE.md"
+description = ""
+homepage = "http://passionfermentation.fr"
+tags = ["", ""]
+features = ["", ""]
+min_version = 0.15
+
+[author]
+  name = "Gildas"
+  homepage = "https://github.com/gildasch"
