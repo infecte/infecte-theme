@@ -1,11 +1,25 @@
 {{ partial "header.html" . }}
 
-<div id='content'>
-  <div class="row">
-    {{ range $key, $value := .Paginator.Pages }}
-    {{ .Render "grid" }}
-    {{ end }}
-  </div>
+<ul class='previews'>
+  {{ range first 3 (where .Data.Pages "Section" "log") }}
+  <li class='image' style="background-image: url('{{ .Params.Image }}')">
+    {{ .Title }}
+  </li>
+  {{ end }}
+</ul>
+
+<div class='articles'>
+  {{ range $key, $value := .Paginator.Pages }}
+  <article style='grid-column: span {{ with .Params.span }}{{ . }}{{ else }}3{{ end }};'>
+    <div class="image" style="background-image: url({{ $.Site.BaseURL }}images/{{ with .Params.image }}{{ . }}{{ else }}default.jpg{{ end }});"></div>
+    <time>{{ with .Site.Params.DateForm }}{{ $.Date.Format . }}{{ else }}{{ $.Date.Format "Mon, Jan 2, 2006" }}{{ end }}</time>
+    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    <div class="summary">
+      {{ .Content }}<br />
+      <!-- <em>{{ .Params.categories }}, {{ .Params.tags }}</em> -->
+    </div>
+  </article>
+  {{ end }}
 </div>
 
 {{ partial "footer.html" . }}
